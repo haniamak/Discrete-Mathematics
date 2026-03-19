@@ -36,24 +36,7 @@ def parse_input(file):
 print(parse_input("input_format"))
 
 
-def maxcut(vertices, edges, graph):
-    maximum_cut = 0
-    for i in range(1000):
-        partition = {vertice: random.choice([0, 1]) for vertice in vertices}
-
-        result = 0
-        for v1, v2, value in edges:
-            result += value * partition[v1] * (1 - partition[v2]) + value * partition[
-                v2
-            ] * (1 - partition[v1])
-        maximum_cut = max(maximum_cut, result)
-    return maximum_cut
-
-
-# print(maxcut(*parse_input("input_format")))
-
-
-def count_weights(vertices, edges, graph, partition):
+def count_weights(edges, partition):
     result = 0
     for v1, v2, value in edges:
         result += value * partition[v1] * (1 - partition[v2]) + value * partition[
@@ -62,10 +45,22 @@ def count_weights(vertices, edges, graph, partition):
     return result
 
 
+def maxcut(vertices, edges, graph):
+    maximum_cut = 0
+    for _ in range(1000):
+        partition = {vertice: random.choice([0, 1]) for vertice in vertices}
+
+        result = count_weights(edges, partition)
+        maximum_cut = max(maximum_cut, result)
+    return maximum_cut
+
+
+# print(maxcut(*parse_input("input_format")))
+
+
 def local_search_maxcut(vertices, edges, graph):
     print(vertices)
     partition = {vertice: random.choice([0, 1]) for vertice in vertices}
-    # result = count_weights(vertices, edges, graph, partition)
 
     change = False
     while not change:
@@ -77,13 +72,13 @@ def local_search_maxcut(vertices, edges, graph):
                     new_result += value
                 else:
                     new_result -= value
-            print(vertice, new_result)
+            # print(vertice, new_result)
             if new_result > 0:
                 continue
             else:
                 partition[vertice] = 1 - partition[vertice]
                 change = True
-    result = count_weights(vertices, edges, graph, partition)
+    result = count_weights(edges, partition)
     return result
 
 
