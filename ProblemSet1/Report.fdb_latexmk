@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1773920816.25691 "/home/hania/Desktop/Discrete-Mathematics/ProblemSet1/Report.tex" "Report.pdf" "Report" 1773920817.16369 0
+["pdflatex"] 1773939009.81274 "/home/hania/Desktop/Discrete-Mathematics/ProblemSet1/Report.tex" "Report.pdf" "Report" 1773939010.45947 0
   "/etc/texmf/web2c/texmf.cnf" 1765110582.13322 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/hania/Desktop/Discrete-Mathematics/ProblemSet1/Report.tex" 1773920815.84226 1166 6be3a4d428ae27b547a79abab71d3887 ""
+  "/home/hania/Desktop/Discrete-Mathematics/ProblemSet1/Report.tex" 1773939009.35414 1260 5dbefb4802c9ec99dc211a9f97267e06 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1728.tfm" 1136768653 3584 ad49a18d8515beef6d92d4d3f197d0fd ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1136768653 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
@@ -51,8 +51,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1765110603 5467255 9a64d1b40e0b893fc5588ecce9d8accf ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1765110729 3348703 41e8ef2af9a08210aa185ad003efda2c ""
-  "Report.aux" 1773920817.03826 360 c72d937d3a5879f09a9ebf0de1c114b7 "pdflatex"
-  "Report.tex" 1773920815.84226 1166 6be3a4d428ae27b547a79abab71d3887 ""
+  "Report.aux" 1773939010.37419 360 c72d937d3a5879f09a9ebf0de1c114b7 "pdflatex"
+  "Report.tex" 1773939009.35414 1260 5dbefb4802c9ec99dc211a9f97267e06 ""
   (generated)
   "Report.aux"
   "Report.log"

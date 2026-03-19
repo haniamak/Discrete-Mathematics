@@ -42,8 +42,7 @@ def maxcut(vertices, edges, graph):
         partition = {vertice: random.choice([0, 1]) for vertice in vertices}
 
         result = 0
-        for edge in edges:
-            v1, v2, value = edge
+        for v1, v2, value in edges:
             result += value * partition[v1] * (1 - partition[v2]) + value * partition[
                 v2
             ] * (1 - partition[v1])
@@ -51,4 +50,34 @@ def maxcut(vertices, edges, graph):
     return maximum_cut
 
 
-print(maxcut(*parse_input("input_format")))
+# print(maxcut(*parse_input("input_format")))
+
+
+def local_search_maxcut(vertices, edges, graph):
+    partition = {vertice: random.choice([0, 1]) for vertice in vertices}
+    result = 0
+    for v1, v2, value in edges:
+        result += value * partition[v1] * (1 - partition[v2]) + value * partition[
+            v2
+        ] * (1 - partition[v1])
+
+    improved = True
+    while improved:
+        improved = False
+        for vertice in vertices:
+            partition[vertice] = 1 - partition[vertice]
+            new_result = 0
+            for v1, v2, value in edges:
+                new_result += value * partition[v1] * (
+                    1 - partition[v2]
+                ) + value * partition[v2] * (1 - partition[v1])
+            if new_result > result:
+                result = new_result
+                improved = True
+            else:
+                partition[vertice] = 1 - partition[vertice]
+            print(vertice, new_result, result)
+    return result
+
+
+print(local_search_maxcut(*parse_input("input_format")))
