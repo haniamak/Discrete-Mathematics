@@ -3,7 +3,7 @@ import random
 
 def parse_input(file):
     with open(file, "r") as f:
-        lines = [line.strip("\n\t") for line in f]
+        lines = [line.strip() for line in f]
         vertices = set()
         edges = []
         type = None
@@ -33,7 +33,7 @@ def parse_input(file):
         return vertices, edges, graph
 
 
-print(parse_input("input_format"))
+print(parse_input("input_format2"))
 
 
 def count_weights(edges, partition):
@@ -55,7 +55,7 @@ def maxcut(vertices, edges, graph):
     return maximum_cut
 
 
-# print(maxcut(*parse_input("input_format")))
+# print(maxcut(*parse_input("input_format2")))
 
 
 def local_search_maxcut(vertices, edges, graph):
@@ -82,4 +82,4 @@ def local_search_maxcut(vertices, edges, graph):
     return result
 
 
-print(local_search_maxcut(*parse_input("input_format")))
+print(local_search_maxcut(*parse_input("input_format2")))
