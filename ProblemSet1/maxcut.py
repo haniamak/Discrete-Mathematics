@@ -1,3 +1,6 @@
+import random
+
+
 def parse_input(file):
     with open(file, "r") as f:
         lines = [line.strip("\n\t") for line in f]
@@ -31,3 +34,21 @@ def parse_input(file):
 
 
 print(parse_input("input_format"))
+
+
+def maxcut(vertices, edges, graph):
+    maximum_cut = 0
+    for i in range(1000):
+        partition = {vertice: random.choice([0, 1]) for vertice in vertices}
+
+        result = 0
+        for edge in edges:
+            v1, v2, value = edge
+            result += value * partition[v1] * (1 - partition[v2]) + value * partition[
+                v2
+            ] * (1 - partition[v1])
+        maximum_cut = max(maximum_cut, result)
+    return maximum_cut
+
+
+print(maxcut(*parse_input("input_format")))
