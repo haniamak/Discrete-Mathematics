@@ -1,0 +1,49 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\geometry{margin=1in}
+
+\title{Report: Max-Cut Problem}
+\author{Hanna Makowska}
+\date{19 March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+The goal of this task is to compute a max cut in a weighted undirected graph.
+Given a graph $G=(V,E)$ with edge weights $w_{uv}$, we want to divide the set of
+vertices into two sets $S$ and $\bar{S}$ to maximize the total weight of edges
+crossing the partition.
+
+\section{Input Format}
+The input file is divided into two parts:
+\begin{itemize}
+  \item A block starting with \texttt{V}, listing vertices.
+  \item A block starting with \texttt{E}, listing weighted edges in the form
+        \texttt{(u)-(v)-w}.
+\end{itemize}
+
+Example input used in this project:
+\begin{verbatim}
+V
+    (a1)
+    (a2)
+    (a3)
+    (a4)
+    (a8)
+E
+    (a1)-(a4)-40
+    (a4)-(a3)-30
+    (a8)-(a3)-30
+\end{verbatim}
+
+\section{First Approach: Random Partitioning}
+The simplest method to find a max cut is to randomly assign each vertex to one of the two sets.
+
+\end{document}
