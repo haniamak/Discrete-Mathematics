@@ -5,6 +5,8 @@
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{mathbbol}
+\usepackage{hyperref}
 \geometry{margin=1in}
 
 \title{Report: Max-Cut Problem}
@@ -45,7 +47,31 @@ E
 
 \section{First Approach: Random Partitioning}
 The simplest method to find a max cut is to randomly assign each vertex to one of the two sets.
+After that we can calculate the total weight of edges crossing the partition, according to the formula:
+\[
+    max \sum_{(i, j) \in E} w_{ij} x_{i} (1 - x_{j}) + w_{ij} x_{j} (1 - x_{i}),x_{i} \in \{0, 1\}
+\]
+and repeat this
+process multiple times to find the best solution.
 
-Refference:
-https://www.cs.cmu.edu/afs/cs/academic/class/15854-f05/www/scribe/lec02.pdf
+\section{Second Approach: Local Search}
+A more sophisticated method is to use a local search algorithm. We start with a random partition and
+iteratively improve it by moving vertices from one set to the other if it increases the total weight
+of crossing edges. The algorithm continues until no single vertex move can improve the solution.
+
+\subsection{Proof}
+To prove that the local search algorithm finds a local maximum, we can use the following argument:
+Let $S$ be the current partition of vertices into two sets. For each vertex $v$, we calculate the change
+in the total weight of crossing edges if we move $v$ from its current set to the other set. If there
+exists a vertex $v$ such that moving it increases the total weight, we perform the move and update the partition.
+We repeat this process until no vertex can be moved to increase the total weight.
+At this point, we have reached a local maximum because any single vertex move would not improve the solution.
+
+\subsection{Complexity}
+In worse case scenario we will have to check all vertices and edges in each iteration, which gives us a time complexity
+of $O(|V| \cdot |E|)$. However, in practice, the algorithm often converges much faster, especially for sparse graphs.
+
+\section{Reference}
+\url{https://www.cs.cmu.edu/afs/cs/academic/class/15854-f05/www/scribe/lec02.pdf}
+
 \end{document}

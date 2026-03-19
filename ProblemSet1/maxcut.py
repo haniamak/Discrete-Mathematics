@@ -53,30 +53,37 @@ def maxcut(vertices, edges, graph):
 # print(maxcut(*parse_input("input_format")))
 
 
-def local_search_maxcut(vertices, edges, graph):
-    partition = {vertice: random.choice([0, 1]) for vertice in vertices}
+def count_weights(vertices, edges, graph, partition):
     result = 0
     for v1, v2, value in edges:
         result += value * partition[v1] * (1 - partition[v2]) + value * partition[
             v2
         ] * (1 - partition[v1])
+    return result
 
-    improved = True
-    while improved:
-        improved = False
+
+def local_search_maxcut(vertices, edges, graph):
+    print(vertices)
+    partition = {vertice: random.choice([0, 1]) for vertice in vertices}
+    # result = count_weights(vertices, edges, graph, partition)
+
+    change = False
+    while not change:
+        change = False
         for vertice in vertices:
-            partition[vertice] = 1 - partition[vertice]
             new_result = 0
-            for v1, v2, value in edges:
-                new_result += value * partition[v1] * (
-                    1 - partition[v2]
-                ) + value * partition[v2] * (1 - partition[v1])
-            if new_result > result:
-                result = new_result
-                improved = True
+            for v, value in graph[vertice]:
+                if partition[vertice] != partition[v]:
+                    new_result += value
+                else:
+                    new_result -= value
+            print(vertice, new_result)
+            if new_result > 0:
+                continue
             else:
                 partition[vertice] = 1 - partition[vertice]
-            print(vertice, new_result, result)
+                change = True
+    result = count_weights(vertices, edges, graph, partition)
     return result
 
 
