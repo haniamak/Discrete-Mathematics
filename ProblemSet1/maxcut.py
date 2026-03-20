@@ -45,7 +45,7 @@ def count_weights(edges, partition):
     return result
 
 
-def maxcut(vertices, edges, graph):
+def maxcut(vertices, edges):
     maximum_cut = 0
     for _ in range(1000):
         partition = {vertice: random.choice([0, 1]) for vertice in vertices}
@@ -82,4 +82,28 @@ def local_search_maxcut(vertices, edges, graph):
     return result
 
 
-print(local_search_maxcut(*parse_input("input_format2")))
+# print(local_search_maxcut(*parse_input("input_format2")))
+
+
+def greedy_maxcut(vertices, edges, graph):
+    S = set()
+    T = set()
+    vertices = list(vertices)
+    print(vertices)
+    weight_S = [0] * len(vertices)
+    weight_T = [0] * len(vertices)
+
+    S.add(vertices[0])
+    for v in vertices[1:]:
+        weight_S[vertices.index(v)] = sum(value for u, value in graph[v] if u in S)
+        weight_T[vertices.index(v)] = sum(value for u, value in graph[v] if u in T)
+        print(v, weight_S[vertices.index(v)], weight_T[vertices.index(v)])
+        if weight_S[vertices.index(v)] >= weight_T[vertices.index(v)]:
+            T.add(v)
+        else:
+            S.add(v)
+    result = count_weights(edges, {v: 0 if v in S else 1 for v in vertices})
+    return result
+
+
+print(greedy_maxcut(*parse_input("input_format2")))
