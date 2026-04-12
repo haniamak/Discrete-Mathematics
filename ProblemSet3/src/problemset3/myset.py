@@ -62,3 +62,6 @@ class MySet:
             for curr in subset:
                 result.append(curr)
         return MySet(result)
+
+    def characteristic_function(self, element: Any) -> int:
+        return 1 if element in self.myset else 0

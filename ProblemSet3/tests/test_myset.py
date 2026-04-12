@@ -49,3 +49,10 @@ def test_power_set():
             (1, 2),
         ]
     )
+
+
+def test_characteristic_function():
+    set1 = MySet([1, 2, 3])
+
+    assert set1.characteristic_function(2) == 1
+    assert set1.characteristic_function(4) == 0
