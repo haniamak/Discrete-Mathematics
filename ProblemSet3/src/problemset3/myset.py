@@ -54,8 +54,11 @@ class MySet:
     def power_set(self) -> MySet:
         result: list[tuple[Any, ...]] = [()]
         for element in self.myset:
-            additions = []
-            for subset in result:
-                additions.append(subset + (element,))
-            result.extend(additions)
+            subset = []
+            for curr in result:
+                tmp = list(curr)
+                tmp.append(element)
+                subset.append(tuple(tmp))
+            for curr in subset:
+                result.append(curr)
         return MySet(result)
