@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import Any
+from itertools import combinations
 
 
 class MySet:
@@ -65,3 +66,28 @@ class MySet:
 
     def characteristic_function(self, element: Any) -> int:
         return 1 if element in self.myset else 0
+
+    @staticmethod
+    def inclusion_exclusion_principle(sets: list[MySet]) -> int:
+        if not all(isinstance(s, MySet) for s in sets):
+            raise TypeError(
+                "Inclusion-Exclusion Principle expects a list of MySet instances"
+            )
+
+        def intersection_many(sets: list[MySet]) -> MySet:
+            if not sets:
+                return MySet([])
+            result = sets[0]
+            for s in sets[1:]:
+                result = result.intersection(s)
+            return MySet(result.myset)
+
+        cardinality = 0
+        for k in range(1, len(sets) + 1):
+            for subset in combinations(sets, k):
+                size = len(intersection_many(list(subset)).myset)
+                if k % 2 == 1:
+                    cardinality += size
+                else:
+                    cardinality -= size
+        return cardinality

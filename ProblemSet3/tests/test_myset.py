@@ -56,3 +56,13 @@ def test_characteristic_function():
 
     assert set1.characteristic_function(2) == 1
     assert set1.characteristic_function(4) == 0
+
+
+def test_inclusion_exclusion_principle():
+    set1 = MySet([1, 2, 3])
+    set2 = MySet([3, 4, 5])
+    set3 = MySet([5, 6, 7])
+
+    result = MySet.inclusion_exclusion_principle([set1, set2, set3])
+
+    assert result == 7
