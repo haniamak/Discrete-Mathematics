@@ -43,6 +43,9 @@ class MySet:
                 result_b.append(element)
         return MySet(result_a), MySet(result_b)
 
+    def absolute_complement(self, universal: MySet) -> MySet:
+        return MySet([x for x in universal.myset if x not in self.myset])
+
     def cartesian_product(self, other: MySet) -> MySet:
         if not isinstance(other, MySet):
             raise TypeError("Cartesian Product expects argument of type MySet")

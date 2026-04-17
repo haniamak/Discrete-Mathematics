@@ -27,6 +27,15 @@ def test_relative_complement():
     assert b == MySet([5, 6])
 
 
+def test_absolute_complement():
+    universal = MySet([1, 2, 3, 4, 5])
+    set1 = MySet([2, 3])
+
+    result = set1.absolute_complement(universal)
+
+    assert result == MySet([1, 4, 5])
+
+
 def test_cartesian_product():
     set1 = MySet([1, 2])
     set2 = MySet([3, 4])
