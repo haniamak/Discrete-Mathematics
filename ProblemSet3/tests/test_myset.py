@@ -75,3 +75,18 @@ def test_inclusion_exclusion_principle():
     result = MySet.inclusion_exclusion_principle([set1, set2, set3])
 
     assert result == 7
+
+
+def test_init_removes_duplicates():
+    result = MySet([1, 1, 2, 2, 3])
+
+    assert result == MySet([1, 2, 3])
+
+
+def test_add():
+    result = MySet(["A", 1, 2, 3])
+
+    result.add(3)
+    result.add(4)
+
+    assert result == MySet(["A", 1, 2, 3, 4])

@@ -5,7 +5,14 @@ from itertools import combinations
 
 class MySet:
     def __init__(self, myset: list[Any]):
-        self.myset = myset
+        self.myset = []
+        for element in myset:
+            if element not in self.myset:
+                self.myset.append(element)
+
+    def add(self, element: Any) -> None:
+        if element not in self.myset:
+            self.myset.append(element)
 
     def __eq__(self, other: MySet) -> bool:
         if not isinstance(other, MySet):
