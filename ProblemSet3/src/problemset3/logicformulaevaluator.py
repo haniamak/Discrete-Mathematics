@@ -25,7 +25,9 @@ def extract_variables(formula: str):
 
 
 def enter_formula():
-    formula = input("Enter a logical formula (use AND, OR, NOT, IMPLIES): ")
+    formula = input(
+        "Enter a logical formula (use AND, OR, NOT, IMPLIES, example one: IMPLIES(A, AND(B, C))): "
+    )
     return formula
 
 
