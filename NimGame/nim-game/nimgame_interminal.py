@@ -126,7 +126,6 @@ def play_nim():
         mode = "Computer"
         player_2_name = "Computer"
     else:
-        mode = "f"
         computer_move_func = None
         mode = "Friend"
         player_2_name = str(input("Enter Player 2's name: ")).strip() or "Player 2"
@@ -136,7 +135,7 @@ def play_nim():
         render_board(n, f"Player: {player_name}", mode, message)
         message = ""
 
-        if mode == "c":
+        if computer_move_func:
             move = nim_human(n, player_name)
             n -= move
             message = f"{player_name} took {move} stick(s)."
